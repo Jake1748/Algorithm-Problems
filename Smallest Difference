@@ -1,0 +1,46 @@
+Promtpt: 
+Write a function that takes in two non-empty arrays of integers, finds the pair of numbers (one from each array) whose 
+absolute difference is closest to zero, and returns an array containing these two numbers, with the number from the first
+array in the first position.
+
+Note that the absolute difference of two integers is the distance between them on the real number line.
+
+You can assume that there will only be one pair of numbers with the smallest difference.
+
+Answer:
+function smallestDifference(arrayOne, arrayTwo) {
+  arrayOne.sort( (a,b) => a-b );
+  arrayTwo.sort( (a,b) => a-b );
+
+  let pointerOne = 0;
+  let pointerTwo = 0;
+
+  let resultOne = 0;
+  let resultTwo = 0;
+
+  let lowestDiff = Infinity;
+  let currentDiff = 0;
+
+  while ( pointerOne < arrayOne.length && pointerTwo < arrayTwo.length ) {
+    currentDiff = Math.abs( arrayOne[pointerOne] - arrayTwo[pointerTwo] );
+    
+    if ( currentDiff === 0 ) return [ arrayOne[pointerOne], arrayTwo[pointerTwo] ]
+    else {
+      if ( currentDiff < lowestDiff ) {
+        lowestDiff = currentDiff;
+        resultOne = arrayOne[pointerOne];
+        resultTwo = arrayTwo[pointerTwo];
+      }
+    }
+
+    arrayOne[pointerOne] < arrayTwo[pointerTwo] 
+      ? pointerOne++
+      : pointerTwo++
+
+  }
+
+  return [ resultOne, resultTwo];
+}
+
+// Do not edit the line below.
+exports.smallestDifference = smallestDifference;
