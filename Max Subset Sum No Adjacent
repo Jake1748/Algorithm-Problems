@@ -1,0 +1,21 @@
+Write a function that takes in an array of positive integers and returns the maximum sum of non-adjacent elements in the array.
+If the input arrray is empty, the function should return 0
+
+Answer:
+
+function maxSubsetSumNoAdjacent(array) {
+  if ( array.length === 0 ) return 0;
+  
+  const highestValues = [];
+
+  for( let i = 0; i < array.length; i++ ) {
+    if ( i === 0 ) highestValues.push(array[0])
+    else if ( i === 1 ) highestValues.push( array[1] > array[0] ? array[1] : array[0] )
+    else if ( highestValues[i-1] < highestValues[i-2] + array[i] ) {
+      highestValues.push( highestValues[i-2] + array[i] );
+    }
+    else highestValues.push( highestValues[i-1] )
+  }
+
+  return highestValues.pop();
+}
