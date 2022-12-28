@@ -1,0 +1,29 @@
+Write a function that takes in a binary Tree and returns its diameter. The diameter of a binary tree is defined as the length of its longest path, even if that path doesn't pass through the root of the tree.
+A path is a collection of connected nodes in a tree, where no node is connected to more than two other nodes. The length of a path is the number of edges bnetween the path's first node and its last node. 
+Each BinaryTree node has an integer value, a left, and a right child node. Children nodes can either be BinaryTree nodes themselves or null.
+
+Answer:
+
+class BinaryTree {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+function binaryTreeDiameter(tree) {
+  const diameter = { max: -Infinity };
+  calculateDiameter( tree, diameter );
+  return diameter.max;
+}
+
+function calculateDiameter( tree, diameter ) {
+  if ( tree === null) return 0;
+
+  const leftDiameter = calculateDiameter(tree.left, diameter);
+  const rightDiameter = calculateDiameter(tree.right, diameter)
+  
+  diameter.max = Math.max( leftDiameter + rightDiameter, diameter.max);
+  
+  return Math.max( leftDiameter + 1, rightDiameter + 1 );
