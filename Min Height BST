@@ -1,0 +1,16 @@
+Write a function that takes in a non-empty sorted array of distinct integers, constructs a BST from the integers, and returns the root of the BST.
+The function should minimize the height of the BST.
+
+Answer:
+
+function minHeightBst(array, left = 0, right = array.length - 1) {
+  if ( left > right ) return null;
+
+  const mid = Math.floor( (left + right) / 2);
+  const bst = new BST(array[mid]);
+
+  bst.left = minHeightBst(array, left, mid - 1);
+  bst.right = minHeightBst(array, mid + 1, right);
+
+  return bst;
+}
