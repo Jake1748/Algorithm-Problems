@@ -1,0 +1,22 @@
+Prompt: https://maryrachaelkoenke.medium.com/single-cycle-check-a78c925deb35
+
+Answer: 
+
+function hasSingleCycle(array) {
+  if ( array.length === 0 ) return false;
+  
+  let firstIdx = 0;
+  // let counterValue = array[firstIdx];                  
+  let counterIdx = 0;                                     // 2
+  
+  for ( let i = array.length; i >= 0; i-- ) {              // 5
+    if ( i === 0 ) { return counterIdx === firstIdx }
+
+    if ( array[counterIdx] === null ) return false;
+
+    const tempVal = array[counterIdx];                    // 2
+    array[counterIdx] = null;                             // 0
+    counterIdx = (tempVal + counterIdx) % array.length;
+    if ( counterIdx < 0 ) counterIdx += array.length;
+  }
+}
