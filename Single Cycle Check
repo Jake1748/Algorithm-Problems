@@ -6,7 +6,6 @@ function hasSingleCycle(array) {
   if ( array.length === 0 ) return false;
   
   let firstIdx = 0;
-  // let counterValue = array[firstIdx];                  
   let counterIdx = 0;                                     // 2
   
   for ( let i = array.length; i >= 0; i-- ) {              // 5
