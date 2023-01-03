@@ -1,0 +1,52 @@
+Prompt: https://www.geeksforgeeks.org/lowest-common-ancestor-binary-tree-set-1/
+
+Answer:
+
+function getYoungestCommonAncestor(topAncestor, descendantOne, descendantTwo) {
+  if ( topAncestor === null ) return null;
+
+  let counterOne = 0;
+  let counterTwo = 0;
+  let iterator = descendantOne;
+  
+  while ( iterator !== null ) {
+    iterator = iterator.ancestor;
+    counterOne++;
+  }
+
+  iterator = descendantTwo;
+
+  while ( iterator !== null ) {
+    iterator = iterator.ancestor;
+    counterTwo++;
+  }
+
+  let difference = Math.abs(counterOne - counterTwo);
+  
+  if (counterOne > counterTwo) {
+    while ( difference > 0 ) {
+      descendantOne = descendantOne.ancestor;
+      difference--;
+    }
+  }
+  else if (counterOne < counterTwo) {
+    while ( difference > 0 ) {
+      descendantTwo = descendantTwo.ancestor;
+      difference--;
+    }
+  }
+  else {console.log("they're the same depth")}
+
+  while ( descendantOne !== null ) {
+    if ( descendantOne === descendantTwo) return descendantOne;
+    
+    if ( descendantOne.ancestor === descendantTwo.ancestor ) {
+      return descendantOne.ancestor
+    }
+
+    descendantOne = descendantOne.ancestor;
+    descendantTwo = descendantTwo.ancestor;
+  }
+
+  return null;
+}
