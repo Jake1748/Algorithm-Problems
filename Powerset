@@ -1,0 +1,19 @@
+Prompt: write a function that takes in an array of unique itegers and returns its powerset.
+The powerset does not need to be in any order.
+
+Answer:
+
+function powerset(array) {
+  const result = [[]];
+
+  for ( let i in array ) {
+    const val = array[i];
+    const resultLength = result.length;
+    
+    for ( let j = 0; j < resultLength; j++) {
+      result.push( [ ...result[j], val ] );
+    }
+  }
+
+  return result;
+}
