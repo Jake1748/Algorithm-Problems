@@ -1,0 +1,53 @@
+Prompt:
+
+Write a function that takes in an array of integers and returns an array of length 2 representing the largest range of integers contained in that array.
+The first number in the output array should be the first number in the range, while the second number should be the last number in the range.
+A range of numbers is defined as a set of numbers that come right after each other in the set of real integers. 
+You can assume that there will only be one largest range.
+Try to optimize the code to O(n) time and O(n) space
+
+Answer:
+
+function largestRange(array) {
+  if ( array.length === 0 ) return [];
+
+  if ( array.length === 1 ) return [1,1];
+
+  let longestRange = [];
+  const hash = {};
+
+  for ( let val of array ) {
+    hash[val] = true;
+  }
+
+  for (let i = 0; i < array.length; i++) {
+    const val = array[i];
+
+    if ( hash[val] ) {
+      let left = val - 1;
+      let right = val + 1;
+      const tempRange = [];
+      
+      leftPushProperly(tempRange, left, hash)
+      
+      tempRange.push(val);
+      hash[ val ] = false;
+
+      while( hash[ right ] ) {
+        tempRange.push( right );
+        hash[ right ] = false;
+        right++
+      }
+      if ( tempRange.length > longestRange.length ) longestRange = tempRange;
+    }
+  }
+  return [ longestRange[0], longestRange[longestRange.length - 1] ]
+}
+
+function leftPushProperly(tempRange, left, hash) {
+  if ( !hash[ left ] ) return;
+  
+  hash[ left ] = false;
+  leftPushProperly(tempRange, left - 1, hash);
+  tempRange.push( left );
+}
