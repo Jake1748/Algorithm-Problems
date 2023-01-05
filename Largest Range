@@ -8,6 +8,55 @@ Try to optimize the code to O(n) time and O(n) space
 
 Answer:
 
+//Optimal solution
+function largestRange(array) {
+  if ( array.length === 0 ) return [];
+
+  if ( array.length === 1 ) return [1,1];
+
+  let longestRange = 0;
+  const hash = {};
+  const result = [];
+
+  for ( let val of array ) {
+    hash[val] = true;
+  }
+
+  for (let i = 0; i < array.length; i++) {
+    const val = array[i];
+
+    if ( hash[val] ) {
+      let left = val - 1;
+      let right = val + 1;
+      let tempRange = 0;
+      
+      while( hash[ left ] ) {
+        tempRange++;
+        hash[ left ] = false;
+        left--;
+      }
+      
+      tempRange++;
+      hash[ val ] = false;
+
+      while( hash[ right ] ) {
+        tempRange++;
+        hash[ right ] = false;
+        right++;
+      }
+      
+      if ( tempRange > longestRange ) {
+        longestRange = tempRange;
+        result[0] = left + 1;
+        result[1] = right - 1;
+        console.log(result)
+      }
+    }
+  }
+  return result;
+}
+
+// This solution does some unnecessary tasks, but the time and space complexity are both O(n)
 function largestRange(array) {
   if ( array.length === 0 ) return [];
 
@@ -51,3 +100,5 @@ function leftPushProperly(tempRange, left, hash) {
   leftPushProperly(tempRange, left - 1, hash);
   tempRange.push( left );
 }
+
+
