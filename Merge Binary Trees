@@ -1,0 +1,27 @@
+Given two binary trees, merge them and return the resulting tree. If two nodes overlap duing the merger then sum the values, otherwise use the existing node.
+Note that your solution can either mutate the existingtrees or return a new tree.
+
+// This is an input class. Do not edit.
+class BinaryTree {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+exports.BinaryTree = BinaryTree;
+
+function mergeBinaryTrees(tree1, tree2) {
+  if ( tree1 === null && tree2 === null ) return null;
+  if ( tree1 === null ) return tree2;
+  if ( tree2 === null ) return tree1;
+
+  const sum = tree1.value + tree2.value;
+  const newTree = new BinaryTree(sum);
+
+  newTree.left = mergeBinaryTrees(tree1.left, tree2.left);
+  newTree.right = mergeBinaryTrees(tree1.right, tree2.right);
+  
+  return newTree;
+}
