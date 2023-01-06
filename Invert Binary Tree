@@ -1,0 +1,16 @@
+Prompt:
+Write a function that takes in a Binary Tree and inverts it. In other words, the function should swar every left node in the tree for its corresponding right node.
+
+Answer:
+function invertBinaryTree(tree) {
+  if ( tree === null ) return;
+
+  const tempBranch = tree.left;
+  tree.left = tree.right;
+  tree.right = tempBranch;
+
+  invertBinaryTree( tree.left );
+  invertBinaryTree( tree.right );
+
+  return tree;
+}
