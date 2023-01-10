@@ -1,0 +1,26 @@
+Prompt: Write a function that takes in a Binary Tree and returns if that tree is symmetrical. A tree is symmetrical if the left and right subtrees are mirro images of each other.
+
+Answer:
+
+// This is an input class. Do not edit.
+class BinaryTree {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+exports.BinaryTree = BinaryTree;
+
+function symmetricalTree(tree) {
+  
+  return compare(tree.left, tree.right);
+}
+
+function compare(left, right) {
+  if (!left || !right) return left === right;
+  if (left.value !== right.value) return false;
+
+  return compare(left.left, right.right) && compare(left.right, right.left)
+}
