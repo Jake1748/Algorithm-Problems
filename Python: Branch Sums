@@ -1,0 +1,15 @@
+Same as the javascript prompt
+
+Answer:
+
+def branchSums(root, sum = 0, result = []):
+    if ( root.left == None and root.right == None ):
+        result.append( sum + root.value )
+        return result
+
+    if root.left != None:
+        branchSums( root.left, sum + root.value, result)
+    if root.right != None:
+        branchSums( root.right, sum + root.value, result)
+
+    return result
