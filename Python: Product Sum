@@ -1,0 +1,13 @@
+Same as the javascript prompt
+
+Answer:
+
+def productSum(array, depth = 1):
+    sum = 0
+    for val in array:
+        if type(val) is list:
+            sum += (depth + 1) * productSum(val, depth + 1)
+        else:
+            sum += val
+
+    return sum
