@@ -1,0 +1,12 @@
+Same as javascript propmpt
+
+Answer:
+
+def isPalindrome(string):
+    newString = "";
+    for num in range(len(string) - 1, -1, -1):
+        print(num)
+        newString += string[num]
+
+    print(newString)
+    return newString == string
