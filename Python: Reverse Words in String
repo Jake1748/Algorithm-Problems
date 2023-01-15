@@ -1,0 +1,25 @@
+Prompt:
+
+Write a function that takes in a string of words separated by one or more whitespaces and returns a string that has these words in reverse order.
+
+Answer:
+
+def reverseWordsInString(string):
+    if string == "":
+        return ""
+    words = []
+    currentString = ''
+    result = []
+    for char in string:
+        if char == ' ':
+            words.append(currentString)
+            currentString = ''
+        else:
+            currentString += char
+            
+    words.append(currentString)
+    print(words)
+    for i in range( len( words ) ):
+        result.append( words.pop() )
+    
+    return ' '.join( result )
