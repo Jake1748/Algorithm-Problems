@@ -1,0 +1,14 @@
+Prompt:
+
+Given an array of positive integers represnting coind denominations and a single non-negative integer n representing a target amount of money, write a funciton that reutns the smallest number of coins needed to make change for that trarget amount using the given coin denominaitons
+
+Answer:
+
+def minNumberOfCoinsForChange(n, denoms):
+    waysToMakeChange = [0] + [float('inf')] * n
+
+    for denom in denoms:
+        for change in range(denom, n + 1):
+            waysToMakeChange[change] = min( waysToMakeChange[change], 1 + waysToMakeChange[change - denom])
+    
+    return waysToMakeChange[-1] if waysToMakeChange[-1] != float('inf') else -1
