@@ -1,0 +1,10 @@
+Given an array of distinct positive integers respesenting coin denominations and a single non-negative integer n representing a target amount of money. write a function that reutns the number f ways to make change for that target amount using the given coin denominations.
+
+Answer:
+
+def numberOfWaysToMakeChange(n, denoms):
+    ways = [1] + [ 0 for _ in range(n) ]
+    for denom in denoms:
+        for way in range( denom, len(ways) ):
+            ways[way] += ways[ way - denom ]
+    return ways[-1]
