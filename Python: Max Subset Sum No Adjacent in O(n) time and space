@@ -1,0 +1,17 @@
+Write a function that takes in an array of positive integers and returns the maximuym sum of non-adjacent elements in the array.
+
+Answer:
+def maxSubsetSumNoAdjacent(array):
+    if len(array) == 0:
+        return 0
+    if len(array) == 1:
+        return array[0]
+    oneAway = array[0]
+    twoAway = 0
+    currentVal = 0
+
+    for i in range(1, len(array) ):
+        currentVal = max( oneAway, array[i] + twoAway)
+        twoAway = oneAway
+        oneAway = currentVal
+    return currentVal
