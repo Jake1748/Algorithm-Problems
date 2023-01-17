@@ -1,0 +1,30 @@
+Write a function that, given a string, returs its longest palindromic substring.
+
+Answer:
+
+def longestPalindromicSubstring(string):
+    if len(string) == 0:
+        return ''
+    result = string[0]
+    for i in range( len(string) ):
+        oddLengthPalindrome = findPalindrome(i - 1, i + 1, string)
+        evenLengthPalindrome = findPalindrome(i, i + 1, string)
+
+        newPalindrome = oddLengthPalindrome if len(oddLengthPalindrome) > len(evenLengthPalindrome) else evenLengthPalindrome
+        result = newPalindrome if len( newPalindrome ) > len( result ) else result
+
+    return result
+
+def findPalindrome(idxOne, idxTwo, string):
+    result = ''
+    if idxOne < 0 or idxTwo >= len(string):
+        return result
+
+    while string[idxOne] == string[idxTwo]:
+        idxOne -= 1
+        idxTwo += 1
+        if idxOne < 0 or idxTwo >= len(string):
+            break
+    idxOne += 1
+    idxTwo -= 1    
+    return string[idxOne:idxTwo + 1]
