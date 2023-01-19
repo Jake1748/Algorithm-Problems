@@ -1,0 +1,37 @@
+You're given two linked lists of potentially unequal length. Each liked list represents a non-negative integer, where each node in the linked list is a digit of that integer, and the first node in each linked list always represents the least significant digit of the integer. Write a function that returns the head of a new linked lis thtat represents the sum of the integers represented by the two input linked lists
+
+Answer:
+
+class LinkedList:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+
+def sumOfLinkedLists(linkedListOne, linkedListTwo):
+    sum = int( convertToString(linkedListOne) ) + int( convertToString(linkedListTwo) )
+    strSum = str(sum)
+    result = LinkedList( int( strSum[-1] ) )
+    currentNode = result
+    
+    for i in range( len(strSum) - 2, -1, -1):
+        currentNode.next = LinkedList( int( strSum[i] ) )
+        currentNode = currentNode.next
+
+    return result
+
+def convertToString(linkedList):
+    if linkedList == None:
+        return 0
+    pointer = linkedList
+    tempStack = []
+    result = []
+    
+    while pointer != None:
+        tempStack.append(pointer.value)
+        pointer = pointer.next
+
+    for i in range( len(tempStack) ):
+        result.append( str( tempStack.pop() ) )
+        
+    return ''.join(result)
