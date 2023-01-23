@@ -1,0 +1,27 @@
+Write a function htat takes in a string made up of brackets and other optional characters. The function should return a boolean representing whether the string is balanced with regard to bracketrs.
+Brackets can't overlap each other.
+
+Answer:
+
+def balancedBrackets(string):
+    openBrackets = []
+
+    for char in string:
+        if char == '(' or char == '{' or char == '[':
+            openBrackets.append(char)
+        elif char == ')':
+            if len(openBrackets) == 0 or openBrackets.pop() != '(':
+                return False
+        elif char == '}':
+            if len(openBrackets) == 0 or openBrackets.pop() != '{':
+                return False
+        elif char == ']':
+            if len(openBrackets) == 0 or openBrackets.pop() != '[':
+                return False
+        else:
+            continue
+
+    if len(openBrackets) != 0:
+        return False
+
+    return True
