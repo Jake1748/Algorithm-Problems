@@ -1,0 +1,33 @@
+Write a funciton that takes in the head of a singly linked list and an integer k and removes the kth node fom the end of the list.
+If ht ehead is the node that's supposed to be removed, your funciton should simply mutate its value and next pointer.
+You can assum that the input linked list will always have at least two nodes and at least k nodes.
+
+Answer:
+# This is an input class. Do not edit.
+class LinkedList:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+
+def removeKthNodeFromEnd(head, k):
+    pointerOne = head
+    pointerTwo = head
+
+    for i in range(k + 1):
+        if pointerTwo == None and i == k:
+            pointerOne.value = pointerOne.next.value
+            break        
+        pointerTwo = pointerTwo.next
+
+    
+    while pointerTwo != None:
+        pointerOne = pointerOne.next
+        pointerTwo = pointerTwo.next
+    
+    tempList = head
+
+
+    tempList = pointerOne.next
+    pointerOne.next = tempList.next
+    tempList.next = None
