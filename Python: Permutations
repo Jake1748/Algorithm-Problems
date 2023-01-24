@@ -1,0 +1,26 @@
+Write a function that takes in an array of unique integers and reutnrs an array of all permutations of those integers.
+If the input array is empty, the funciton should retunr an emptyh array.
+
+Answer:
+
+def getPermutations(array):
+    if len(array) == 0:
+        return []
+    result = []
+    createPermutations(array, [], result)
+
+    return result
+
+def createPermutations(array, perm, result):
+    if len(array) == 1:
+        result.append( perm + array )
+    else:
+        for num in array:
+            newArr = []
+            for val in array:
+                if val == num:
+                    continue
+                else:
+                    newArr.append(val)
+            newPerm = [*perm, num]
+            createPermutations(newArr, newPerm, result)
