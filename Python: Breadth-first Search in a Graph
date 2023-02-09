@@ -1,0 +1,36 @@
+
+
+Answer:
+
+# Do not edit the class below except
+# for the breadthFirstSearch method.
+# Feel free to add new properties
+# and methods to the class.
+class Node:
+    def __init__(self, name):
+        self.children = []
+        self.name = name
+
+    def addChild(self, name):
+        self.children.append(Node(name))
+        return self
+
+    def breadthFirstSearch(self, result):
+        if self == None:
+            return result
+        
+        pointer = None
+        inputStack = []
+        outputStack = [self]
+        
+        while len( outputStack ) != 0:
+            pointer = outputStack.pop()
+            result.append(pointer.name)
+            
+            for node in pointer.children:
+                inputStack.append(node)
+            if len( outputStack ) == 0 :
+                for num in range( len( inputStack ) ):
+                    outputStack.append( inputStack.pop() )
+
+        return result
