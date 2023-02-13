@@ -1,0 +1,16 @@
+Answer:
+
+def zeroSumSubarray(nums):
+    if len(nums) == 0:
+        return False
+
+    visitedSet = set()
+    sum = 0
+    
+    for num in nums:
+        sum += num
+        if sum in visitedSet or sum == 0:
+            return True
+        visitedSet.add(sum)
+    
+    return False
