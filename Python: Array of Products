@@ -1,0 +1,25 @@
+Answer:
+
+def arrayOfProducts(array):
+    if len(array) == 0 or len(array) == 1:
+        return array
+
+    result = []
+    leftList = []
+    rightList = []
+    curProduct = 1
+
+    for right in range( len(array) - 1, -1, -1 ):
+        rightList.append(curProduct)
+        curProduct *= array[right]
+
+    curProduct = 1
+    
+    for left in range( len(array) ):
+        leftList.append(curProduct)
+        curProduct *= array[left]
+
+    for i in range( len(array) ):
+        result.append( leftList[i] * rightList[ len(array) - 1 - i] )
+    
+    return result
