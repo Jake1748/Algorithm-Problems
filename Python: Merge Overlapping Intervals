@@ -1,0 +1,19 @@
+def mergeOverlappingIntervals(intervals):
+    # sort through intervals
+    # check if interval overlaps
+    # true: record first num of first list and last num of last list
+    result = []
+    sortedIntervals = sorted(intervals, key = lambda x: x[0])
+
+    for interval in sortedIntervals:
+        if len(result) == 0:
+            result.append(interval)
+        else:
+            lastEle = result[-1]
+            if lastEle[1] < interval[0]:
+                result.append(interval)
+            else:
+                lastEle[0] = min(lastEle[0], interval[0])
+                lastEle[1] = max(lastEle[1], interval[1])
+
+    return result
