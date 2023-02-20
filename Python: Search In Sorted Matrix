@@ -1,0 +1,11 @@
+# Brute force approach, but ends up with the same O(n) as more optimal appraches
+
+def searchInSortedMatrix(matrix, target):
+    for rowIdx in range( len(matrix) ):
+        row = matrix[rowIdx]
+        for colIdx in range( len(row) - 1, -1, -1 ):
+            col = row[colIdx]
+            if col == target:
+                return [rowIdx, colIdx]
+
+    return [ -1, -1 ]
