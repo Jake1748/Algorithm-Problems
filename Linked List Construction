@@ -94,3 +94,4 @@ class DoublyLinkedList:
             pointer = pointer.next
 
         return -1
+    #create a nextNode method
