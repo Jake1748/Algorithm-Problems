@@ -1,0 +1,20 @@
+def staircaseTraversal(height, maxSteps):
+    if maxSteps == 0:
+        return 0
+
+    if maxSteps == 1:
+        return 1
+        
+    prevNumbers = {1:1, 2:2}
+
+    return recursivehelper(height, maxSteps, prevNumbers)
+    
+def recursiveHelper(height, maxSteps, hash):
+    if height == 0:
+        return 0
+
+    if height in hash:
+        return hash[height] + recursiveHelper(height - 1, maxSteps, hash)
+    elif height == maxSteps:
+        return 1 + recursiveHelper(height - 1, maxSteps, hash)
+    else:
