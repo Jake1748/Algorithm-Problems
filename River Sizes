@@ -1,0 +1,35 @@
+def riverSizes(matrix):
+    # make a return array
+    # create a hash of visited nodes
+    # loop through matrix
+    # check if 1
+    #     true: call helper function
+            # function: recursive counting ones, checks 4 directions for more 1's
+    #     false: keep going
+
+    result = []
+    visitedNodes = set()
+    rows = len( matrix )
+    cols = len( matrix[0] )
+    
+    for rowNum in range( rows ):
+        for colNum in range( cols ):
+            if matrix[rowNum][colNum] == 1 and (rowNum, colNum) not in visitedNodes:
+                result.append( countRiver(matrix, rowNum, colNum, visitedNodes ) )
+    
+    return result
+
+def countRiver(matrix, rowNum, colNum, visitedNodes ):
+    print( rowNum, colNum)
+    if rowNum not in range( len(matrix) ) or colNum not in range( len( matrix[0] ) ) or matrix[rowNum][colNum] == 0 or (rowNum, colNum) in visitedNodes:
+        return 0
+    
+    visitedNodes.add( (rowNum, colNum) ) 
+    directions = [ (0,1), (1,0), (0,-1), (-1,0) ]
+    size = 1
+    
+    for x,y in directions:
+        size += countRiver( matrix, x + rowNum, y + colNum, visitedNodes)
+
+    print('size:', size)
+    return size
