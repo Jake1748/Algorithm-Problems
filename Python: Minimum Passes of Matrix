@@ -1,0 +1,49 @@
+def minimumPassesOfMatrix(matrix):
+    # counter for total passes
+    # set1 for all negative numbers
+    # set2 of coordinates to change
+    # loop through matrix and add negative values to set1
+    # while loop for set1 has values
+    # loop through matrix
+    #     check if number is negative
+    #     true: call helper method that checks surrounding numbers for positive
+    #         true: add to set2
+    # loop through set2 
+        # convert coordinates to positive
+        # remove coordinates from set1 and set2
+
+    counter = 0
+    allNegPositions = set()
+    convertPositions = set()
+    rows = len( matrix )
+    cols = len( matrix[0] )
+    directions = [ (0,1), (1,0), (0,-1), (-1,0) ]
+    prevLength = 0
+    
+    for row in range( rows ):
+        for col in range( cols ):
+            if matrix[row][col] < 0:
+                allNegPositions.add( (row,col) )
+    prevLength = len( allNegPositions )
+
+    while( len(allNegPositions) > 0 ):
+        for coord in allNegPositions:
+            for direction in directions:
+                newRow = coord[0] + direction[0]
+                newCol = coord[1] + direction[1]
+                
+                if newRow in range( rows ) and newCol in range( cols ) and matrix[newRow][newCol] > 0:
+                    convertPositions.add( coord )
+        
+        for coord in convertPositions:
+            matrix[ coord[0] ][ coord[1] ] *= -1
+            allNegPositions.remove( coord )
+
+        if len( allNegPositions ) == prevLength:
+            return -1
+        
+        convertPositions.clear()
+        counter += 1
+        prevLength = len( allNegPositions )
+
+    return counter
