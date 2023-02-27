@@ -1,0 +1,44 @@
+# This is an input class. Do not edit.
+class LinkedList:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+
+def mergingLinkedLists(linkedListOne, linkedListTwo):
+    listOneLength = 0
+    listTwoLength = 0
+    lengthPointer = linkedListOne
+    foundConvergence = False
+    result = None
+
+    while lengthPointer != None:
+        listOneLength += 1
+        lengthPointer = lengthPointer.next
+
+    lengthPointer = linkedListTwo
+
+    while lengthPointer != None:
+        listTwoLength += 1
+        lengthPointer = lengthPointer.next
+
+    for diff in range( abs( listTwoLength - listOneLength ) ):
+        if listTwoLength > listOneLength:
+            linkedListTwo = linkedListTwo.next
+        else:
+            linkedListOne = linkedListOne.next
+    
+    pointerOne = linkedListOne
+    pointerTwo = linkedListTwo
+
+    while pointerOne != None and pointerTwo != None:
+        if pointerOne.value == pointerTwo.value and foundConvergence == False:
+            foundConvergence = True
+            result = pointerOne
+        if foundConvergence and pointerOne.value != pointerTwo.value:
+            return None
+
+        pointerOne = pointerOne.next
+        pointerTwo = pointerTwo.next
+
+    return result 
