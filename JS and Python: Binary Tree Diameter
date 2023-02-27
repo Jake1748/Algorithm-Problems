@@ -27,3 +27,34 @@ function calculateDiameter( tree, diameter ) {
   diameter.max = Math.max( leftDiameter + rightDiameter, diameter.max);
   
   return Math.max( leftDiameter + 1, rightDiameter + 1 );
+
+#Python:
+
+# This is an input class. Do not edit.
+class BinaryTree:
+    def __init__(self, value, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+
+
+def binaryTreeDiameter(tree):
+    # base case: null, return 0
+    # recurse left
+    # recurse right
+    # return whichever left or right is bigger + 1
+    longestPath = [0]
+    calculateDiameter(tree, longestPath)
+    return longestPath[0]
+    
+def calculateDiameter(tree, longestPath):
+    if tree == None:
+        return 0
+    
+    left = calculateDiameter(tree.left, longestPath)
+    right = calculateDiameter(tree.right, longestPath)
+    
+    currDiameter = left + right
+    longestPath[0] = max( longestPath[0], currDiameter )
+    
+    return max(left, right) + 1
