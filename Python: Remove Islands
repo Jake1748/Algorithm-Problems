@@ -1,0 +1,42 @@
+def removeIslands(matrix):
+    # make a hash of visited nodes
+    # make a set of nodes to remove
+    # make a staging set of nodes to remove
+    # loop through matrix
+        # call helper method that recursively checks surrounding positions
+        # if any location is an edge, just stop
+    visitedNodes = set()
+    nodesToRemove = set()
+    stagingRemoval = set()
+    rows = len( matrix )
+    cols = len( matrix[0] )
+
+    for row in range( rows ):
+        for col in range( cols ):
+            if (row,col) not in visitedNodes:
+                checkIsland(matrix, row, col, stagingRemoval, visitedNodes)
+            
+                for node in stagingRemoval:
+                    if node[0] == 0 or node[0] == rows - 1 or node[1] == 0 or node[1] == cols - 1:
+                        stagingRemoval.clear()
+                        break
+                for node in stagingRemoval:
+                    nodesToRemove.add( node )
+                    
+                stagingRemoval.clear()
+    for tup in nodesToRemove:
+        matrix[ tup[0] ][ tup[1] ] = 0
+    
+    return matrix
+
+def checkIsland(matrix, row, col, stagingRemoval, visitedNodes):
+    if row < 0 or row >= len( matrix ) or col < 0 or col >= len( matrix[0] ) or (row, col) in visitedNodes:
+        return
+   
+    visitedNodes.add( (row, col) )
+    
+    if matrix[ row ][ col ] == 1:
+        stagingRemoval.add( (row,col) )
+        directions = [ [0,1], [1,0], [0,-1], [-1,0] ]
+        for dirRow, dirCol in directions:
+            checkIsland(matrix, row + dirRow, col + dirCol, stagingRemoval, visitedNodes)
