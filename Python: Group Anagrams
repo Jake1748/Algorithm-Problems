@@ -1,0 +1,26 @@
+def groupAnagrams(words):
+    # create a hash
+    # create a result
+    # loop through words
+        # make new word with letters in alphabetical order
+        # check if in hash
+            # true: add both to result
+            # false: add to hash
+    # return result
+
+    foundAnagrams = {}
+
+    for word in words:
+        sortedWord = sortWord(word)
+        
+        if sortedWord in foundAnagrams:
+            foundAnagrams[sortedWord].append( word )
+        else:
+            foundAnagrams[sortedWord] = [ word ]
+
+    return list( foundAnagrams.values() )
+
+def sortWord( word ):
+    wordList = [*word]
+    wordList.sort()
+    return "".join( wordList )
