@@ -13,10 +13,10 @@ def phoneNumberMnemonics(phoneNumber):
 # helper function finds all combinations by recursively calling itself and accesssing hash
 def findCombinations(phoneNumber, keypad, result, starter):
     if phoneNumber == '':
-        print( 'here:', starter )
         return
 
     for let in keypad[ phoneNumber[0] ]:
-        findCombinations( phoneNumber[1:], keypad, result, starter.join(let) )
+        findCombinations( phoneNumber[1:], keypad, result, starter + let)
         if len( phoneNumber ) == 1:
-            result.append(starter.join( phoneNumber) )
+            result.append( starter + let )
+    
