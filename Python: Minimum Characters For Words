@@ -1,0 +1,32 @@
+def minimumCharactersForWords(words):
+    # create a hash for min needed leters
+    # create result list
+    # loop through words
+        # create a hash for current words
+        # loop through word
+            # increment letters in hash
+        # loop through second hash and add to main hash 
+    # add all letters from main hash to result list
+
+    totalLetters = {}
+    result = []
+    for word in words:
+        tempLetters = {}
+        for let in word:
+            if let in tempLetters:
+                tempLetters[let] += 1
+            else:
+                tempLetters[let] = 1
+            print(tempLetters)
+        for key in tempLetters.keys():
+            if key not in totalLetters:
+                totalLetters[key] = tempLetters[key]
+            else:
+                totalLetters[key] = tempLetters[key] if tempLetters[key] > totalLetters[key] else totalLetters[key]
+        tempLetters.clear()
+    
+    for key in totalLetters.keys():
+        for count in range( totalLetters[key] ):
+            result.append(key)
+
+    return result
