@@ -1,0 +1,81 @@
+# Do not edit the class below except for
+# the insert, contains, and remove methods.
+# Feel free to add new properties and methods
+# to the class.
+class BST:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+    def insert(self, value):
+        if value > self.value or value == self.value:
+            if self.right == None:
+                self.right = BST(value)
+            else:
+                self.right.insert(value)
+        else: # value < self.value:
+            if self.left == None:
+                self.left = BST(value)
+            else:
+                self.left.insert(value)         
+
+
+    def contains(self, value):
+        if self.value == value:
+            return True
+            
+        if value > self.value:
+            if self.right == None:
+                return False
+            else:
+                return self.right.contains(value)
+        else:
+            if self.left == None:
+                return False
+            else:
+                return self.left.contains(value)
+
+    def remove(self, value):
+        #scrap this, try doing with recursive approach
+        
+        if self.left == None and self.right == None:
+            return
+            
+        pointer = self.right
+        prevPointer = self
+
+        curVal = self
+        # find the remove value
+
+        while curVal != None:
+            if curVal.value == value:
+                prevPointer = curVal
+                pointer = curVal.right
+                break
+            elif value < curVal.value:
+                curVal = curVal.left
+            else: # value > curval.value
+                curVal = curVal.right
+
+        if curVal == None:
+            return 
+        if pointer == None:
+            
+        
+        while pointer != None:
+            if pointer.left == None and pointer.right == None:
+                if prevPointer.left == pointer:
+                    prevPointer.left = None
+                else:
+                    prevPointer.right = None
+                self.value = pointer.value
+                break
+            elif pointer.left == None:
+                prevPointer = pointer
+                pointer = pointer.right
+            else:
+                prevPointer = pointer
+                pointer = pointer.left
+            
+        return self
