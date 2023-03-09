@@ -1,0 +1,33 @@
+def isMonotonic(array):
+    # check if empty or length 1
+    # check if first two elements are increasing or decreasing
+    # loop through array
+    #     check to make sure trend continues
+    #     return false if broken
+    # return true as default
+
+    if len( array ) == 1 or len( array ) == 0:
+        return True
+
+    trend = 1 if array[1] > array[0] else 0
+    isForked = False
+
+    if array[1] == array[0]:
+        isForked = True
+
+    for i in range( 2, len( array ) ):
+        cur = i
+        prev = i - 1
+        
+        if trend == 1:
+            if array[cur] < array[prev]:
+                return False
+        else:
+            if isForked:
+                trend = 1 if array[cur] > array[prev] else 0
+                isForked = False
+            else:
+                if array[cur] > array[prev]:
+                    return False
+
+    return True
