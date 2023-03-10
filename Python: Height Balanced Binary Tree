@@ -1,0 +1,38 @@
+# This is an input class. Do not edit.
+class BinaryTree:
+    def __init__(self, value, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+
+
+def heightBalancedBinaryTree(tree):
+    # check if tree is null or len 1
+    # compare left and right subtree with helper function
+    if tree == None or tree.left == None and tree.right == None:
+        return True
+
+    foundImbalance = [False]
+
+    left = checkHeight( tree.left, foundImbalance )
+    right = checkHeight( tree.right, foundImbalance )
+
+    if foundImbalance[0] == True:
+        return False
+        
+    return abs( left - right ) < 2
+
+# helper function does depth-first search and compare heights
+def checkHeight( tree, foundImbalance ):
+    if tree == None:
+        return 0
+    # print(tree.value)
+    left = checkHeight(tree.left, foundImbalance)
+    right = checkHeight(tree.right, foundImbalance)
+    higher = left if left > right else right
+
+    if abs( left - right ) > 1:
+        foundImbalance[0] = True
+
+    print( tree.value, ': ', left, right)
+    return 1 + higher
