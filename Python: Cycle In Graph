@@ -1,0 +1,28 @@
+def cycleInGraph(edges):
+    # create visited set
+    # loop through edges finding i
+        # call helper method with edge
+        # clear set
+    # default return false
+
+    visited = set()
+    result = [False]
+    for i in range( len( edges ) ):
+        recurseEdges(i, visited, edges, result) 
+        visited.clear()
+
+    return result[0]
+
+# helper method: takes an edge and recursively visits edges in edges array
+def recurseEdges(i, visited, edges, result):
+    if i in visited or result[0] == True:
+        result[0] = True
+        return 0
+        
+    visited.add(i)
+    for edge in edges[i]:
+        temp = recurseEdges( edge, visited, edges, result )
+        if temp == 1:
+            visited.remove( edge )
+
+    return 1
