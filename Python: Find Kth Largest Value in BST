@@ -1,0 +1,30 @@
+# This is an input class. Do not edit.
+class BST:
+    def __init__(self, value, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+
+
+def findKthLargestValueInBst(tree, k):
+    # create a list for all numbers in the order
+    # depth first search of entire tree with helper method
+    #     add node to list
+    # pop off elements from list until k is 0
+    # return value
+
+    nums = []
+    findAllNodes(tree, nums)
+    result = 0
+    for i in range( k ):
+        result = nums.pop()
+
+    return result
+
+def findAllNodes(tree, nums):
+    if tree == None:
+        return
+        
+    findAllNodes(tree.left, nums)
+    nums.append( tree.value )
+    findAllNodes(tree.right, nums)
