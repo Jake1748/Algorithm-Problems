@@ -1,0 +1,32 @@
+def twoColorable(edges):
+    # make two sets that represent the 2 numbers
+    # loop thru edges
+        # check if i is in either set
+            #true: add edges to other set, but return false if in same set as i
+            # add to firstSet then add edges to other set
+    # default: true
+
+    redSet = set()
+    blueSet = set()
+
+    for i in range( len( edges ) ):
+        if i in blueSet:
+            for edge in edges[i]:
+                if edge in blueSet:
+                    return False
+                elif edge in redSet:
+                    pass
+                else:
+                    redSet.add( edge )
+        else: #if i in redSet or in neither
+            if i not in redSet:
+                redSet.add( i )
+            for edge in edges[i]:
+                if edge in redSet:
+                    return False
+                elif edge in blueSet:
+                    pass
+                else:
+                    blueSet.add( edge )
+
+    return True
