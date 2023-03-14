@@ -1,0 +1,33 @@
+def validIPAddresses(string):
+    # create a result list
+    # run a helper method to find combos
+    # return result
+
+    result = []
+    findCombinations(string, 4, result, [])
+    return result
+
+# helper method is recursive sectioning off portions of the string up to 4 iterations
+    
+def findCombinations(string, octet, result, currentAddress):
+    if octet == 0 or len( string ) == 0:
+        return
+        
+    if octet > 1:
+        for i in range( 1, 4 ):
+            newOctet = string[ 0 : i ]
+            if newOctet[0] == '0' and len( newOctet ) > 1:
+                pass
+            else:
+                if int( newOctet ) < 256:
+                    currentAddress.append( newOctet )
+                    findCombinations(string[i:], octet - 1, result, currentAddress)
+                    currentAddress.pop()
+    
+    if octet == 1 and len( currentAddress ) == 3 and int(string) < 256:
+        if string[0] == '0' and len( string ) > 1:
+            pass
+        else:
+            currentAddress.append( string )
+            result.append( '.'.join( currentAddress ) )
+            currentAddress.pop()
