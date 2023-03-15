@@ -1,0 +1,22 @@
+def threeNumberSort(array, order):
+    # hash to track number of value in order
+    # loop thru array and count instances of number to record in order
+    # loop thru array again populating in order of hash
+    if len( array ) == 0 or len( order ) == 0:
+        return array
+    instances = {}
+    
+    for val in array:
+        if val not in instances:
+            instances[val] = 1
+        else:
+            instances[val] += 1
+    array.clear()
+    for num in order:
+        if num not in instances:
+            pass
+        else:
+            for count in range( instances[num] ):
+                array.append(num)
+
+    return array
