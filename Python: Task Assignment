@@ -1,0 +1,26 @@
+def taskAssignment(k, tasks):
+    # sort tasks by ascending
+    # make two pointers representing the highest and lowest values
+    # loop thru tasks until pointers pass each other
+        # add pairs to result
+
+    result = []
+    dictTask = {}
+    pointerOne = 0
+    pointerTwo = len( tasks ) - 1
+
+    for i in range( len( tasks ) ):
+        task = tasks[ i ]
+        if task not in dictTask:
+            dictTask[ task ] = [i]
+        else:
+            dictTask[ task ].append( i )
+
+    tasks.sort()
+
+    while pointerOne < pointerTwo:
+        result.append( [ dictTask[ tasks[pointerOne] ].pop(), dictTask[ tasks[pointerTwo] ].pop() ] )
+        pointerOne += 1
+        pointerTwo -= 1
+
+    return result
