@@ -1,0 +1,40 @@
+# This problem is not complete yet
+# This is an input class. Do not edit.
+class BST:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+
+def validateBst(tree):
+    if tree == None:
+        return False
+        
+    result = [True]
+    validateTree(tree.left, tree.value, result, 'left')
+    validateTree(tree.right, tree.value, result, 'right')
+    return result[0]
+
+def validateTree(tree, prevVal, result, dir):
+    if tree == None:
+        return
+
+    if tree.left is not None:
+        if dir == 'right' and tree.left.value < prevVal:
+            print(1)
+            result[0] = False
+        if tree.left.value >= tree.value:
+            print(2)
+            result[0] = False
+    
+    if tree.right is not None:
+        if dir == 'left' and tree.right.value > prevVal:
+            print(3, tree.right.value, prevVal)
+            result[0] = False
+        if tree.right.value < tree.value:
+            print(4)
+            result[0] = False    
+
+    validateTree(tree.left, tree.value, result, dir)
+    validateTree(tree.right, tree.value, result, dir)
