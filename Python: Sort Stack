@@ -1,0 +1,23 @@
+def sortStack(stack):
+    # base case: size of stack is 1
+    # pop stack and store as val
+    # sort stack
+    # compare val to top of stack
+        # push if greater
+        # pop and sort if less
+
+    if len( stack ) < 2:
+        return stack
+
+    valOne = stack.pop()
+    sortStack(stack)
+    valTwo = stack.pop()
+
+    smallVal = valTwo if valTwo < valOne else valOne
+    largeVal = valTwo if valTwo >= valOne else valOne
+
+    stack.append( smallVal )
+    sortStack(stack)
+    stack.append( largeVal )
+
+    return stack
