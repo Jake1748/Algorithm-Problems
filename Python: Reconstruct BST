@@ -1,0 +1,33 @@
+# Incomplete:
+
+# This is an input class. Do not edit.
+class BST:
+    def __init__(self, value, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+
+
+def reconstructBst(arr):
+    # make a pointer to root
+    # make pointer a running prev node
+    # make a pointer for a running current node
+    # loop thru array
+        # use helper method to create new BST with val and attach to running tree
+        # adjust running pointers
+    # return root pointer
+
+# helper method uses recursion to place the given value into the tree as a node
+
+    rootPointer = BST(arr[0])
+    minNode = None
+    maxNode = None
+    for i in range( 1, len( arr ) ):
+        if arr[i] < rootPointer.value:
+            addValue(arr[i], rootpointer, minNode, rootPointer)
+        else:
+            addValue(arr[i], rootpointer, rootPointer, maxNode)
+    return rootPointer
+
+def addValue(val, rootpointer, minNode, maxNode):
+    newBST = BST( val )
