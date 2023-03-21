@@ -1,3 +1,31 @@
+# Second attempt:
+
+# This is an input class. Do not edit.
+class BST:
+    def __init__(self, value, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+
+
+def reconstructBst( arr, curr = 0, left = None, right = None ):
+    if right - curr < 2:
+        return BST(arr[curr])
+
+    # find right bound
+    for i in range(curr, right):
+        if arr[i] > arr[curr]:
+            right = i
+            break
+
+    # find left bound
+    for i in range(curr, right):
+        if arr[i] < arr[curr]:
+            left = i
+            break
+
+    return BST( arr[curr], reconstructBst( arr, left, left, right ), reconstructBst( arr, right, left, right ) )
+
 # Incomplete:
 
 # This is an input class. Do not edit.
