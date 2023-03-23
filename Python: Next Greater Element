@@ -1,3 +1,37 @@
+# Finished solution
+
+def nextGreaterElement(array):
+    if len( array ) == 0:
+        return []
+        
+    result = [-1 for _ in range( len(array ) ) ]
+    numStack = []
+    count = 0
+    
+    for i in reversed( range( 2*len(array) + 1 ) ):
+        adjustedI = i % len( array )
+        if len( numStack ) == 0:
+            numStack.append( array[adjustedI] )
+            continue
+
+        while( len(numStack) >= 0 ):
+            
+            currentVal = array[adjustedI]
+            if len(numStack) == 0:
+                numStack.append( currentVal )
+                break
+            
+            popVal = numStack.pop()
+            if currentVal < popVal:
+                result[adjustedI] = popVal
+                numStack.append( popVal )
+                numStack.append( currentVal )
+                break
+            else:
+                continue
+    return result
+    
+# Incomplete attempt
 def nextGreaterElement(array):
     result = [-1 for _ in range( len(array ) ) ]
     numStack = []
