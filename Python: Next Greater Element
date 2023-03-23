@@ -1,0 +1,14 @@
+def nextGreaterElement(array):
+    result = [-1 for _ in range( len(array ) ) ]
+    numStack = []
+    count = 0
+    
+    for i in reversed( range( 2*len(array) ) ):
+        adjustedI = i % 7
+        if len(numStack) == 0:
+            numStack.append( array[adjustedI] )
+        else:
+            
+        # numStack.append(array[adjustedI])
+
+    print( numStack )
