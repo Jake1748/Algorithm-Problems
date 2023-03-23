@@ -1,6 +1,36 @@
 Write a function that takes in an n x m two-dimensional array, that can be square shape, and returns a one-dimensional array of all the barray's elements in spiral order.
 
 Answer:
+# Valid solution:
+
+def spiralTraverse(array):
+    if len(array) == 1:
+        return array[0]
+    result = []
+    startCol = 0
+    endCol = len(array[0]) - 1
+    startRow = 0
+    endRow = len(array) - 1
+
+    while( startCol <= endCol and startRow <= endRow):
+        for i in range(startCol, endCol + 1):
+            result.append(array[startRow][i])
+        for i in range(startRow + 1, endRow + 1):
+            result.append(array[i][endCol])
+        if startRow >= endRow:
+            break
+        if startCol >= endCol:
+            break
+        for i in reversed(range(startCol, endCol)):
+            result.append(array[endRow][i])
+        for i in reversed(range(startRow + 1, endRow)):
+            result.append(array[i][startCol])
+        startCol += 1
+        endCol -= 1
+        startRow += 1
+        endRow -= 1
+    return result
+
 # Note this is not a perfect answer. It only works for 2-D arrays that are squares and rectangles
 def spiralTraverse(array):
     if len(array) == 1:
