@@ -7,6 +7,38 @@ class BST:
         self.left = left
         self.right = right
 
+def reconstructBst( arr ):
+    if len( arr ) == 1:
+        return BST(arr[0])
+
+    return addBranch(arr, 0, 1, len( arra ) )
+
+def addBranch( arr, curr = 0, left = None, right = None ):
+    # Finds leaf node
+    if right - left < 2:
+        return BST(arr[curr])
+
+    # find right bound
+    for i in range( curr, right ):
+        if arr[i] > arr[curr]:
+            right = i
+            break
+
+    # find left bound
+    for i in range(curr, right):
+        if arr[i] < arr[curr]:
+            left = i
+            break
+
+    return BST( arr[curr], addBranch( arr, left, left, right ), addBranch( arr, right, left, right ) )
+
+# This is an input class. Do not edit.
+class BST:
+    def __init__(self, value, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+
 
 def reconstructBst( arr, curr = 0, left = None, right = None ):
     if right - curr < 2:
