@@ -1,0 +1,27 @@
+def oneEdit(stringOne, stringTwo):
+    if len( stringOne ) == len( stringTwo ) or abs( len( stringOne ) - len( stringTwo ) ) == 1: 
+        foundEdit = False
+        longer = stringOne if len( stringOne ) > len( stringTwo ) else stringTwo
+        shorter = stringTwo if longer == stringOne else stringOne
+    else:
+        return False
+
+    longerCounter = 0
+    shorterCounter = 0
+    
+    while shorterCounter < len( shorter ):
+        longerChar = longer[ longerCounter ]
+        shorterChar = shorter[ shorterCounter ]
+        
+        if longerChar != shorterChar:
+            if foundEdit:
+                return False
+
+            foundEdit = True
+            if len( longer ) != len( shorter ):
+                longerCounter += 1
+                continue
+
+        longerCounter += 1
+        shorterCounter += 1
+    return True
