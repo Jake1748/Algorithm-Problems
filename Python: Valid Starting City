@@ -1,0 +1,19 @@
+def validStartingCity(distances, fuel, mpg):
+    # Goal: find the most amount of fuel comsumed
+    # loop thru arrays finding the minimum value
+    # add deficit/surplus to running total
+
+    minGas = 0
+    result = 0
+    currentGas = 0
+
+    for i in range( len(fuel) ):
+        if currentGas < minGas:
+            minGas = currentGas
+            result = i
+        milesGained = mpg * fuel[i] - distances[i]
+        currentGas += milesGained / mpg
+        
+    return result
+        
+    
