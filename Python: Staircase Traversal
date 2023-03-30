@@ -1,4 +1,18 @@
 def staircaseTraversal(height, maxSteps):
+    if maxSteps == 1:
+        return 1
+    if height < 1:
+        return 0
+        
+    if height == 1 or height == 2:
+        return height
+
+    # print( 'height: ', height,  '1: ',staircaseTraversal(height - 1, maxSteps), '2: ', staircaseTraversal(height - 2, maxSteps) )
+    
+    print(height )
+    return staircaseTraversal(height - 1, maxSteps)  + staircaseTraversal(height - 2, maxSteps)
+
+def staircaseTraversal(height, maxSteps):
     if maxSteps == 0:
         return 0
 
