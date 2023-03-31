@@ -1,0 +1,22 @@
+Not done yet
+
+def levenshteinDistance(str1, str2):
+    table = [ [0 for _ in range( len(str2) + 1 ) ] for _ in range( len(str1) + 1 ) ]
+
+    for col in range( len(table) ):
+        # print(str1[col])
+        for row in range( len(table[col] ) ):
+            # print(str2[row])
+            if col == 0:
+                table[col][row] = row
+            elif row == 0 or row == 1:
+                table[col][row] = col
+            else:
+                if str1[col - 1] == str2[row - 1]:
+                    # print(str1[col], str2[row], col, row)
+                    table[col][row] = table[col - 1][row - 1]
+                else:
+                    table[col][row] = min( table[col - 1][row], table[col][row - 1], table[col - 1][row - 1] ) + 1
+                # pass
+    print(table)
+    return table[-1][-1] 
