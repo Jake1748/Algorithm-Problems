@@ -1,3 +1,27 @@
+O(k*n) time O(n) space solution
+def staircaseTraversal(height, maxSteps):
+    heights = [1]
+    cur = 0
+    lowIdx = 0
+    highIdx = 0
+
+    for i in range( 1, height + 1):
+        if lowIdx == highIdx:
+            cur = heights[highIdx] 
+        else:
+            cur = 0
+            for i in range(highIdx - lowIdx + 1):
+                cur += heights[ lowIdx + i]
+            
+        heights.append( cur )
+        
+        if highIdx - lowIdx + 1 < maxSteps:
+            highIdx += 1
+        else:
+            lowIdx += 1
+            highIdx += 1
+    return heights[-1]
+
 def staircaseTraversal(height, maxSteps):
     if maxSteps == 1:
         return 1
