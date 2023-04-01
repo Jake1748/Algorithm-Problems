@@ -1,0 +1,12 @@
+Dynamic programming (DP) is essenitally reducing the amount of work of recursion problems by using storage space to record repeated results.
+It is very common to see patterns in recursion problems because of its nature of performing the same functions over ang over again.
+
+The most common and basic tool used for DP problems is an array or nested array. These are usually filled with the number 0, and then looped through 
+to alter specific values. The reason for this apprach is because the array can be a visual representation of breaking the problem down into its 
+components. It's especially useful as a teaching tool to show how functions are repeating themselves by showing components and how they connect.
+
+It's also really important to understand the sliding window approach. This is really useful for DP because the solution to a sub-function usually 
+consists of a few previous solutions, and future sub-functions will follow the same pattern. This is the emphasis of a sliding window approach. 
+The sliding window approach is focusing on a specific set of data, and incrementing forward or backwards. It usually requires incrementing the start 
+and end points. The reason it is called a sliding window is because the dataset can be highlited to show a rectangle, and it looks like it moves
+left or right as it increments over time.
