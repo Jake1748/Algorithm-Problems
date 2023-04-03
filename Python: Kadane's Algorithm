@@ -1,0 +1,25 @@
+def kadanesAlgorithm(array):
+    min = 0
+    max = 0
+    currentMinIdx = 0
+    currentMaxIdx = 0
+    currentSum = 0
+    currentMax = float('-inf')
+
+    for i in range( len(array) ):
+        val = array[i]
+        currentSum += val
+        
+        if currentSum > currentMax:
+            currentMaxIdx = i
+            currentMax = currentSum
+            min = currentMinIdx
+            max = currentMaxIdx
+            
+        if currentSum < 0:
+            currentMinIdx = i + 1
+            currentMaxIdx = i + 1
+            currentSum = 0
+
+
+    return currentMax
