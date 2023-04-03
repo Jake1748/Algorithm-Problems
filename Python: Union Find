@@ -1,0 +1,43 @@
+# Do not edit the class below except for
+# the constructor and the createSet, find,
+# and union methods. Feel free to add new
+# properties and methods to the class.
+class UnionFind:
+    def __init__(self):
+        self.values = {}
+        self.heights = {}
+
+    def createSet(self, value):
+        self.values[ value ] = value
+        self.heights[ value ] = 0
+
+    def find(self, value):
+        if value not in self.values:
+            return None
+            
+        if self.values[value] == value:
+            return value
+
+        currentParent = self.values[value]
+        parent = self.find( currentParent )
+        
+        if self.values[value] != parent:
+            self.values[value] = parent
+
+        return parent
+            
+
+    def union(self, valueOne, valueTwo):
+        parentOne = self.find(valueOne)
+        parentTwo = self.find(valueTwo)
+        
+        if parentOne == None or parentTwo == None:
+            return None
+            
+        heightOne = self.heights[valueOne]
+        heightTwo = self.heights[valueTwo]
+
+        parentToAdd = parentOne if parentOne < parentTwo else parentTwo
+        overallParent = parentOne if parentToAdd == parentTwo else parentTwo
+
+        self.values[parentToAdd] = overallParent
