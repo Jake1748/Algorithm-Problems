@@ -1,3 +1,42 @@
+# Wrong solution:
+
+def minRewards(scores):
+    result = [0 for _ in range( len(scores) ) ]
+    mini = 0
+    maxi = 0 
+    count = 0
+    prevVal = scores[0]
+
+    for i in range( len(scores) ):
+        val = scores[i]
+        if prevVal > val:
+            count -= 1
+            mini = min(mini, count)
+        if prevVal < val:
+            count += 1
+            maxi = max(maxi, count)
+
+        result[i] = count
+
+        if i == len(scores) - 1:
+            result[i] = maxi if val > prevVal else mini
+
+        prevVal = val
+
+
+    diff = abs(mini) + abs(maxi)
+    sum = 0
+    
+    for i in range( len(scores) ):
+        sum += result[i] 
+        sum += diff
+
+    return sum
+    # return result
+    # print(result)
+    # print(mini, maxi)
+    # print(sum)
+
 # Workings for a standard solution
 
 def minRewards(scores):
