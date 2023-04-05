@@ -1,0 +1,13 @@
+# Workings for a standard solution
+
+def minRewards(scores):
+    result = [0 for _ in range( len( scores) ) ]
+    prevVal = scores[0]
+
+    # finds the min values then calls update valleys
+    for i in range( 1, len( scores ) ):
+        currentVal = scores[i]
+        if( currentVal > prevVal ):
+            pass
+
+        prevVal = currentVal
