@@ -1,3 +1,31 @@
+# Working solution:
+
+def minRewards(scores):
+    result = [1 for _ in range( len( scores) ) ]
+    
+    # finds the min values then calls update valleys
+    for i in range( 1, len( scores ) ):
+        currentVal = scores[i]
+        prevVal = scores[ i - 1 ]
+        if( currentVal > prevVal ):
+            result[i] = result[ i - 1 ] + 1
+
+    # make a second pass but from the reverse
+    for i in range( len( scores ) - 2, -1, -1 ):
+    # or for i in reversed( range( len( scores ) ) )
+        currentVal = scores[i]
+        prevVal = scores[ i + 1 ]
+        if( currentVal > prevVal ):
+            result[i] = max( result[i], result[ i + 1 ] + 1 ) 
+
+    sum = 0 
+    
+    for val in result:
+        sum += val
+
+    # print( result, sum )
+    return sum 
+
 # Work in progress
 
 def minRewards(scores):
