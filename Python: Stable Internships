@@ -1,3 +1,53 @@
+# Working solution:
+
+def stableInternships(interns, teams):
+    if len(interns) == 0 or len(teams) == 0:
+        return []
+        
+    teamsToInterns = {}
+    availableInterns = [ i for i in range( len( interns ) ) ]
+    currentInternPreferences = [ 0 for i in range( len( interns ) ) ]
+    teamMaps = []
+
+    # populate all data structures with default info
+    for i in range( len( teams ) ):
+        newDict = {}
+        for j in range( len( teams[i] ) ):
+            newDict[ teams[i][j] ] = j
+        teamMaps.append(newDict)
+        
+    # Loop as long as there are available interns
+        # go through all available interns 
+        # check if prefered choice is taken
+        # Resolve conflicts with taken teams
+
+    # convert teamsToInterns into nested lists
+
+    while( len(availableInterns) > 0 ):
+        for i in range( len(availableInterns) ):
+            currentIntern = availableInterns.pop()
+            internPreference = interns[ currentIntern ][ currentInternPreferences[ currentIntern ] ]
+            
+            if internPreference not in teamsToInterns:
+                teamsToInterns[ internPreference ] = currentIntern
+            else: # there is a conflict
+                currentPreferedIntern = teamsToInterns[internPreference]
+                aspiringIntern = currentIntern
+                
+                teamCurrentChoiceRanking = teamMaps[internPreference][ currentPreferedIntern ]
+                teamAspiringInternRanking = teamMaps[internPreference][currentIntern]
+
+                preferedIntern = currentPreferedIntern if teamCurrentChoiceRanking < teamAspiringInternRanking else aspiringIntern 
+                NonPreferedIntern = currentPreferedIntern if preferedIntern == aspiringIntern else aspiringIntern
+
+                teamsToInterns[ internPreference ] = preferedIntern
+
+                availableInterns.append( NonPreferedIntern )
+
+            currentInternPreferences[currentIntern] += 1
+
+    return [ [ teamsToInterns[i], i  ] for i in range( len( teamsToInterns ) ) ] 
+
 # Current Non-Working solution:
 
 def stableInternships(interns, teams):
