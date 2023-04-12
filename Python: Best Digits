@@ -1,3 +1,35 @@
+# Solution: O(n) time and O(n) space
+
+def bestDigits(number, numDigits):
+    # check if number is empty
+    # loop while numDigits is greater than 0
+        # call helper method to remove 1 digit
+
+    if number == '':
+        return ''
+    
+    resultArr = [ number[0] ]
+    
+    for i in range( 1, len(number) ):
+        currentVal = number[i]
+        topStackVal = resultArr[-1]
+
+        while numDigits > 0 and currentVal > topStackVal:
+            resultArr.pop()
+            if len( resultArr ) == 0:
+                numDigits -= 1
+                break
+            topStackVal = resultArr[-1]
+            numDigits -= 1
+
+        resultArr.append( currentVal )
+
+    while( numDigits > 0 ):
+        resultArr.pop()
+        numDigits -= 1
+
+    return ''.join( resultArr )
+    
 # Solution: O(n x m) time and O(n) space
 
 def bestDigits(number, numDigits):
