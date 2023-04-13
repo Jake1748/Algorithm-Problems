@@ -1,4 +1,21 @@
+O(n) time and O(1) space
 
+# This is an input class. Do not edit.
+class LinkedList:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+
+def middleNode(linkedList):
+    fastNode = linkedList
+    slowNode = fastNode
+
+    while fastNode and fastNode.next:
+        fastNode = fastNode.next.next
+        slowNode = slowNode.next
+
+    return slowNode
 # O(n) space and O(n) time solution
 
 # This is an input class. Do not edit.
