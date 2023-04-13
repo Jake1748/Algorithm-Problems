@@ -1,0 +1,23 @@
+
+# O(n) space and O(n) time solution
+
+# This is an input class. Do not edit.
+class LinkedList:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+
+def middleNode(linkedList):
+    # loop through linkedList
+        # add values to stack
+
+    # return middle value
+
+    iterator = linkedList
+    values = []
+    while( iterator != None):
+        values.append( iterator )
+        iterator = iterator.next
+
+    return values[ len(values) // 2 ]
