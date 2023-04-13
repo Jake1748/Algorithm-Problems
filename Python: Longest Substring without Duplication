@@ -1,0 +1,41 @@
+# Solution in progress
+
+def longestSubstringWithoutDuplication(string):
+    # empty strings
+    # dictionary that holds found chars
+    # one pointer for looping
+    # one pointer for starting char for longest string
+    # longest string variable
+    
+    # loop through string
+        # check if char is in dict
+            # yes: move starting pointer
+            # no: add to longest string variable
+
+    if string == '':
+        return ''
+
+    foundChars = {}
+    startingIdx = 0
+    longestString = [0,0]
+
+    for i in range( len(string) ):
+        char = string[i]
+        if char in foundChars or i == len(string) -1:
+            print(char)
+            print( i, startingIdx, longestString[1], longestString[0])
+            if ( i - startingIdx ) > ( longestString[1] - longestString[0] ):
+                print(' got here', char)
+                longestString[0] = startingIdx
+                longestString[1] = i 
+                print('current longest string: ', longestString, foundChars)
+            startingIdx = i - 1
+            # print('startingIdx, ',startingIdx)
+
+        # longestString[1] = i
+        foundChars[char] = i
+
+    print( 'first: ', longestString[0] )
+    print( 'second: ', longestString[1] )
+    print( string[ longestString[0] : longestString[1] + 1 ] )
+    return string[ longestString[0] : longestString[1] + 1 ] 
