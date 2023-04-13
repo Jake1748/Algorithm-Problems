@@ -1,0 +1,34 @@
+# O(n) time and O(1) space solution
+
+# This is an input class. Do not edit.
+class LinkedList:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+
+def reverseLinkedList(head):
+    # loop through head
+        # low pointer points to previous value, handles head
+        # middle pointer points to value to reverse
+        # high pointer points to severed body, signals end of list
+
+    lowPointer = head
+    middlePointer = head
+    highPointer = head.next
+
+    while highPointer:
+        # handles the head node and the beginning of a list
+        if middlePointer == head:
+            middlePointer = highPointer
+            highPointer = highPointer.next
+            lowPointer.next = None
+        else: # increment all pointers
+            lowPointer = middlePointer
+            middlePointer = highPointer
+            highPointer = highPointer.next
+
+        # reverse the middle node
+        middlePointer.next = lowPointer
+
+    return middlePointer
