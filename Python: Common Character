@@ -1,0 +1,21 @@
+# O(n x m) time and O(m) space
+
+def commonCharacters(strings):
+    # make dictionary for common characters
+    # str1 is the comparison string
+    # loop through the second string and compare letters to str1 for first pass, 
+    # dictionary for subsequent
+        # add common chars to dict
+    # loop through dictionary and return values equal to the length of the array
+
+    str1 = set( [ char for char in strings[0] ] )
+    for i in range( 1, len(strings) ):
+        str2 = strings[i]
+        charsRemove = []
+        for char in str1:
+            if char not in str2:
+                charsRemove.append(char)
+        for char in charsRemove:
+            str1.remove(char)
+
+    return str1
