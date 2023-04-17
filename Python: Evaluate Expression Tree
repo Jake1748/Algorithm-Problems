@@ -1,0 +1,27 @@
+O(n) time and O(h) space
+
+# This is an input class. Do not edit.
+class BinaryTree:
+    def __init__(self, value, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+
+
+def evaluateExpressionTree(tree):
+    # base case: no children, return current value
+    # if else ladder to handle operator options
+
+    if tree.left == None or tree.right == None:
+        return tree.value
+
+    if tree.value == -1:
+        return evaluateExpressionTree( tree.left ) + evaluateExpressionTree( tree.right )
+    elif tree.value == -2:
+        return evaluateExpressionTree( tree.left ) - evaluateExpressionTree( tree.right )
+    elif tree.value == -3:
+        left = evaluateExpressionTree( tree.left ) 
+        right = evaluateExpressionTree( tree.right )
+        return int(left / right)
+    else: # value == -4
+        return evaluateExpressionTree( tree.left ) * evaluateExpressionTree( tree.right )
