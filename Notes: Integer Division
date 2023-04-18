@@ -1,0 +1,6 @@
+Floor division is common amongst many OOP programming languages such as Java and C++
+Floor division is where the result of the division is rounded down, regardless of the resultant value
+For integers, this is not a problem for dividing positive integers
+However, division with a negtive integer will cause division with remainders to round to the lesser negative value
+For example, 9/-2 equals -5 because the -4.5 gets rounded down to -5
+In Python 3, it is available in the form of the '//' operator
