@@ -1,0 +1,4 @@
+Tuples are immutable data sctrutures denoted by a comma
+The parentheses around a tuples are not necessary, but are helpful to the other programmers
+it is most useful as an iteating variable that is removed 
+One of its well-known uses is from the items method of a dictionary where the return value is a list of tuples representing the key, value pairs
