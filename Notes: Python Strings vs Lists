@@ -1,0 +1,5 @@
+In many programming languages, arrays and strings are very similar
+In fact, strings are usually modified arrays
+It lends to the fact that strings are immutable and can be traversed with indexes
+in python, lists are more like ArrayLists, so there are some differences 
+At its core though, strings are still immutable and a proper sequence
