@@ -3,3 +3,9 @@ They essentially are the method of isolating specific sequences in a string
 Usually using the find method and looping through the handle of a document is enough for simple tasks
 However, reading email and documents with specific formats presents a challenge: it doesn't follow line-by-line formatting
 Regular expressions are able to sift through large pieces of data to find specific templates/formats that users want to find
+
+In Python:
+Regular expressions are imported through the re module
+-search method takes a regular expression and string to return a boolean if there was a match
+-findall method takes the same parameters and returns a list of the matches
+
