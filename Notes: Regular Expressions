@@ -1,4 +1,5 @@
-Regular expressions are unique to python
+Regular expressions are not unique to python.
+There is similar implementation in other OOP languages such as Java and Pearl, but python is the most straight-forward
 They essentially are the method of isolating specific sequences in a string
 Usually using the find method and looping through the handle of a document is enough for simple tasks
 However, reading email and documents with specific formats presents a challenge: it doesn't follow line-by-line formatting
@@ -8,4 +9,3 @@ In Python:
 Regular expressions are imported through the re module
 -search method takes a regular expression and string to return a boolean if there was a match
 -findall method takes the same parameters and returns a list of the matches
-
