@@ -1,0 +1,18 @@
+# O(N) time and O(N)
+
+def missingNumbers(nums):
+    # create list populated with all numbers from nlength of nums + 2
+    # loop through nums and change values in list 
+    # loop through list and return remaining values
+
+    newList = [i + 1 for i in range( len(nums) + 2 ) ]
+    
+    for val in nums:
+        newList[ val - 1 ] = None
+
+    result = []
+    for val in newList:
+        if val != None:
+            result.append(val)
+
+    return result
