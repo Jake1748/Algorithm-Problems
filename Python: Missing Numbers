@@ -1,3 +1,27 @@
+# O(N) time and O(1)
+
+def missingNumbers(nums):
+    # Preface, use the indices of the nums array as an ordered list of all the values
+    # add 2 more spaces into nums with infinity
+    # loop through the first values of nums
+        # turn the index of the current value -1 into a negative
+    # loop through entire nums
+        # add indices of non-negative values to result
+
+    nums += [float('inf'), float('inf')]
+    for i in range( len(nums) - 2 ) :
+        val = i
+        visitedNum = abs( nums[val] ) - 1
+        nums[visitedNum] = -nums[visitedNum]
+        
+    result = []
+    for i in range( len(nums) ):
+        if nums[i] > 0:
+            result.append(i + 1)
+
+    return result
+            
+
 # O(N) time and O(N)
 
 def missingNumbers(nums):
