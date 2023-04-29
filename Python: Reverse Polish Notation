@@ -1,3 +1,30 @@
+# This solution also runs in O(N) time and O(N) space. but this solution utilizes lambda expressions
+
+def reversePolishNotation(tokens):
+    # one stack for operands and numbers
+    # loop through tokens
+        # find 2 consequetive numbers
+            # perform operation
+            # check number stack and do operation if available
+
+    if len(tokens) == 1:
+        return int(tokens[0])
+    numStack = []
+    operands = {'+': lambda a,b : a + b,
+                '-': lambda a,b : a - b,
+                '/': lambda a,b : int(a / b),
+                '*': lambda a,b : a * b
+               }
+    
+    for val in tokens:
+        if val in operands:
+            b = numStack.pop()
+            a = numStack.pop()
+            numStack.append( operands[ val ]( a,b ) )
+        else: # val and val2 are numbers
+            numStack.append( int(val) )
+    return numStack[0]
+
 # O(N) time and O(N) space
 
 def reversePolishNotation(tokens):
