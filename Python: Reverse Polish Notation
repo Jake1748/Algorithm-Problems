@@ -1,0 +1,32 @@
+# O(N) time and O(N) space
+
+def reversePolishNotation(tokens):
+    # one stack for operands and numbers
+    # loop through tokens
+        # find 2 consequetive numbers
+            # perform operation
+            # check number stack and do operation if available
+
+    if len(tokens) == 1:
+        return int(tokens[0])
+    numStack = []
+    operands = {'+', '-', '/', '*'}
+    
+    for val in tokens:
+        if val in operands:
+            numStack.append( calculate(val, numStack.pop(), numStack.pop() ) )
+        else: # val and val2 are numbers
+            numStack.append( val )
+    return numStack[0]
+        
+def calculate(operand, val, val2):
+        val = int(val) # 2
+        val2 = int(val2) # 3
+        if operand == '/':
+            return int(val2 / val)
+        elif operand == '*':
+            return val2 * val
+        elif operand == '-':
+            return val2 - val
+        else: # operand == +
+            return val2 + val
