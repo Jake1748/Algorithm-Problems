@@ -1,3 +1,28 @@
+# O(n) time and O(n) space
+# This solution is simpler to look at and understand, but the space complexity is sacrificed 
+
+# This is an input class. Do not edit.
+class BinaryTree:
+    def __init__(self, value, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+
+
+def splitBinaryTree(tree):
+    cache = []
+    totalSum = sumBranch(tree, cache)
+    halfSum = totalSum / 2
+    return halfSum if halfSum in cache else 0
+
+def sumBranch(tree, cache):
+    if tree == None:
+        return 0
+    totalSum = sumBranch(tree.left, cache) + sumBranch(tree.right, cache) + tree.value
+    cache.append(totalSum)
+    return totalSum 
+
+
 O(n) time and O(h) space
 
 # This is an input class. Do not edit.
