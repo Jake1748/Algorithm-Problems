@@ -1,3 +1,5 @@
+O(n) time and O(h) space
+
 # This is an input class. Do not edit.
 class BinaryTree:
     def __init__(self, value, left=None, right=None):
@@ -10,7 +12,6 @@ def splitBinaryTree(tree):
     halfSubtreeSum = sumBranch(tree) / 2
     # if halfSubtreeSum % 2 == 1:
     #     return 0
-    print('halfSubtreeSum,', halfSubtreeSum)
     foundSubTree = [False]
     findBranchSum(tree, halfSubtreeSum, foundSubTree)
     
@@ -27,7 +28,6 @@ def findBranchSum(tree, halfSubtreeSum, foundSubTree):
         return 0
 
     totalSum = findBranchSum(tree.left, halfSubtreeSum, foundSubTree) + findBranchSum(tree.right, halfSubtreeSum, foundSubTree) + tree.value
-    print('totalSum:', totalSum, halfSubtreeSum == totalSum)
     if totalSum == halfSubtreeSum:
         foundSubTree[0] = True
 
