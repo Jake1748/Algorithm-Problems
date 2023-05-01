@@ -1,0 +1,35 @@
+# This is an input class. Do not edit.
+class BinaryTree:
+    def __init__(self, value, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+
+
+def splitBinaryTree(tree):
+    halfSubtreeSum = sumBranch(tree) / 2
+    # if halfSubtreeSum % 2 == 1:
+    #     return 0
+    print('halfSubtreeSum,', halfSubtreeSum)
+    foundSubTree = [False]
+    findBranchSum(tree, halfSubtreeSum, foundSubTree)
+    
+    return halfSubtreeSum if foundSubTree[0] else 0
+
+def sumBranch(tree):
+    if tree == None:
+        return 0
+
+    return sumBranch(tree.left) + sumBranch(tree.right) + tree.value
+
+def findBranchSum(tree, halfSubtreeSum, foundSubTree):
+    if tree == None:
+        return 0
+
+    totalSum = findBranchSum(tree.left, halfSubtreeSum, foundSubTree) + findBranchSum(tree.right, halfSubtreeSum, foundSubTree) + tree.value
+    print('totalSum:', totalSum, halfSubtreeSum == totalSum)
+    if totalSum == halfSubtreeSum:
+        foundSubTree[0] = True
+
+    return totalSum
+    
