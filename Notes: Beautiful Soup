@@ -1,0 +1,4 @@
+Beautiful soup is a python packaged that can be accessed through pip
+Its mainly used to process and parse through the html of webpages
+This effectively bypasses the sporadic formatting of webpages to consistently give information about the website
+It is especially useful for scrapers to process the web
