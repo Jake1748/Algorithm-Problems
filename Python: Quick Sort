@@ -1,0 +1,5 @@
+# 
+
+def quickSort(array):
+    for i in reversed( range( len(array) - 1,  ) ):
+        if array[ i ] > array[ i + 1 ]:
