@@ -1,0 +1,6 @@
+XML is a makrup language that dictates the transfer of data between systems
+It is structured very similarly like html. In fact, there was probably some influence on html.
+XML has tags like html that can have attributes that act as properties of those tags. 
+XML has schemas that can pre-define the type of data and format of data sent. 
+This prevents invalid formating that would confuse the parties sending data
+
