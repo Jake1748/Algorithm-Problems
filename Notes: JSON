@@ -5,3 +5,5 @@ This makes it an easy way for developers to read and parse the information
 JSON was edited so that it was more bare-bones and compatible for other systmes that use different programming languages.
 Most languages have something similar to a JS Object which makes JSON more accessible
 It is a lightweight object that functions as a very popular standard in many data transfers.
+Compared to XML, JSON is less powerful, but more convenient for users. 
+It is prefered when the information sent is simple, and doesn't have variance in what the data could be.
