@@ -1,0 +1,4 @@
+This is a software method that uses software components that are called services for applications.
+Most notabley, the software involved uses APIs from other companies to create a new, wholistic product.
+This method compartmentalizes different functionalities of the application. 
+It likes to find the cutoff point where the end uses interacts with the application.
