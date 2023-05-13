@@ -1,0 +1,4 @@
+SQLite is a lightweight database.
+It uses all the functionalities of SQL, the language
+It is embedded in Python
+Not as powerful as MySQL or Oracle
