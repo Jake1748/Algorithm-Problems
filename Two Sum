@@ -1,0 +1,13 @@
+# From Leetcode
+# Runs O(n) time and O(n) space
+
+class Solution(object):
+    def twoSum(self, nums, target):
+        visitedNums = {}
+        for i,num in enumerate(nums):
+            print(i, num)
+            newTarget = target - num
+            if visitedNums.get(newTarget) != None:
+                return [ i, visitedNums[newTarget] ]
+            else:
+                visitedNums[num] = i
