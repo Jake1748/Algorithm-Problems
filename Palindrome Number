@@ -1,5 +1,6 @@
 # This is a leetcode problem
 # This runs at O(n) time and constant space
+
 class Solution:
     def isPalindrome(self, x: int) -> bool:
         stringNum = str(x)
@@ -17,3 +18,13 @@ class Solution:
             return False
         else:
             return True
+
+# A simpler solution:
+
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+
+        if str(x) == str(x)[::-1]:
+            return True
+        else:
+            return False
