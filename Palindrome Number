@@ -1,0 +1,19 @@
+# This is a leetcode problem
+# This runs at O(n) time and constant space
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        stringNum = str(x)
+        leftPointer = 0
+        rightPointer = len(stringNum) - 1
+
+        while(leftPointer < rightPointer):
+            if stringNum[leftPointer] != stringNum[rightPointer]:
+                return False
+
+            leftPointer += 1
+            rightPointer -= 1
+            
+        if stringNum[leftPointer] != stringNum[rightPointer]:
+            return False
+        else:
+            return True
