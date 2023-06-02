@@ -1,5 +1,32 @@
 # Working solution
 # O(n) time and O(1) space
+# Increased performance from using the in operator for evaluating open brackets instead of == operator
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+
+        opcl = dict(('()', '[]', '{}'))
+        print(opcl)
+
+        open_Bracket = []
+        closed_Bracket = {
+            ')' : '(',
+            '}' : '{',
+            ']' : '['
+        }
+
+        for bracket in s:
+            if bracket in '({[':
+                open_Bracket.append(bracket)
+            else:
+                if len(open_Bracket) == 0 or open_Bracket.pop() != closed_Bracket[ bracket ]:
+                    return False
+        if len(open_Bracket) > 0:
+            return False
+        return True
+
+# Working solution
+# O(n) time and O(1) space
 
 class Solution:
     def isValid(self, s: str) -> bool:
