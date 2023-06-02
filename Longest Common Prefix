@@ -1,3 +1,30 @@
+# Working solution
+# O(n x m) time and O(m) space
+
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        result = []
+        if len(strs) == 0 or strs[0] == '':
+            return ""
+
+        prefix = strs[0][0]
+        found = False
+        num = 0
+
+        while(True):
+            for i,word in enumerate(strs):
+                if num > len(word) - 1 or prefix != word[num]:
+                    found = True
+                    break
+                if i == len(strs) - 1:
+                    result += prefix
+            num += 1
+            if found or num == len(strs[0]):
+                break
+            prefix = strs[0][num]
+
+        return "".join(result)
+
 # Current iteration
 
 class Solution:
