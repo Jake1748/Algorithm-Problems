@@ -1,0 +1,24 @@
+# Working solution
+# O(n) time and O(1) space
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        open_Bracket = []
+        closed_Bracket = {
+            ')' : '(',
+            '}' : '{',
+            ']' : '['
+        }
+
+        for bracket in s:
+            if bracket == '(' or bracket == '{' or bracket == '[':
+                open_Bracket.append(bracket)
+            else:
+                try:
+                    if open_Bracket.pop() != closed_Bracket[ bracket ]:
+                        return False
+                except:
+                    return False
+        if len(open_Bracket) > 0:
+            return False
+        return True
