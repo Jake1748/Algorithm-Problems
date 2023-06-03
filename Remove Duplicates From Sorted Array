@@ -1,0 +1,26 @@
+# This solution works for most cases, but causes a timeout error for large lists
+
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        if len(nums) == 0:
+            return 0
+        uniques = set()
+        i = 0
+        counter = 0
+        while True:
+            # print('here:', nums)
+            num = nums[i]
+            if num not in uniques:
+                uniques.add(num)
+            else:
+                for j in range(i, len(nums) - 1 ):
+                    temp = nums[j]
+                    nums[j] = nums[j + 1]
+                    nums[j + 1] = temp
+                i -= 1
+            i += 1
+            counter += 1
+            if counter == len(nums):
+                break
+
+        return len(uniques) 
