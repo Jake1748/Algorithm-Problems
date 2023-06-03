@@ -1,0 +1,25 @@
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        uniques = set()
+        count = 0
+        i = 0
+        while True:
+            num = nums[i]
+            print('real:', nums)
+            if num not in uniques:
+                uniques.add(num)
+                i += 1
+            else:
+                count += 1
+                j = i
+                while j + 1 <= len(nums) - 1:
+                    print('else:', nums)
+                    temp = nums[j]
+                    nums[j] = nums[j + 1]
+                    nums[j + 1] = temp
+                    j += 1
+        for i in range(count - 1):
+            print('pop', nums)
+            nums.pop()
+        
+        return len(uniques)
