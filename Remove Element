@@ -1,3 +1,24 @@
+# Working solution
+# O(n) time and O(1) space
+
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        counter = 0
+        i = 0
+        while i < len(nums) and len(nums) > 0:
+            num = nums[i]
+            if num == val:
+                for j in range(i, len(nums) - 1 ):
+                    temp = nums[j]
+                    nums[j] = nums[j + 1]
+                    nums[j + 1] = temp
+                i -= 1
+                nums.pop()
+            else:
+                counter += 1
+            i += 1
+        return counter
+
 # Solution in progress
 
 class Solution:
