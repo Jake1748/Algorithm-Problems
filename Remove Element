@@ -1,5 +1,20 @@
 # Working solution
 # O(n) time and O(1) space
+# This solution uses pop() with an index to remove an element at specific indices
+
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        i = 0
+        while (i < len(nums)):
+            print(nums)
+            if nums[i] == val:
+                nums.pop(i)
+            else:
+                i += 1
+        return len(nums)
+
+# Working solution
+# O(n) time and O(1) space
 
 class Solution:
     def removeElement(self, nums: List[int], val: int) -> int:
