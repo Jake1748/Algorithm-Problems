@@ -1,3 +1,22 @@
+# This solution uses the sliding window approach
+# O(nm) time and O(nm) space
+
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        start = 0
+        end = len(needle)
+
+        for i in range( len(haystack) ):
+            w = haystack[start : end]
+            print(w, start, end)
+            if  w == needle:
+                return start
+            else:
+                start += 1
+                end += 1
+
+        return -1
+
 # Working solution
 # O(n) time and O(1) space
 
