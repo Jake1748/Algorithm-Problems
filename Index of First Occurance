@@ -1,0 +1,45 @@
+# This solution also uses the sliding window approach, but with a while loop. This solution has the same time complexity and space complexity
+
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        if needle == haystack:
+            return 0
+            
+        start = 0
+        end = len(needle)
+
+        while end <= len(haystack):
+            w = haystack[start : end]
+            if  w == needle:
+                return start
+            else:
+                start += 1
+                end += 1
+
+        return -1
+
+# This solution uses the sliding window approach
+# O(nm) time and O(n) space
+
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        start = 0
+        end = len(needle)
+
+        for i in range( len(haystack) ):
+            w = haystack[start : end]
+            print(w, start, end)
+            if  w == needle:
+                return start
+            else:
+                start += 1
+                end += 1
+
+        return -1
+
+# Working solution
+# O(n) time and O(1) space
+
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        return haystack.find(needle)
