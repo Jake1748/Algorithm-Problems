@@ -1,0 +1,11 @@
+# Working solution
+# O(n) time and 0(m) space
+
+class Solution:
+    def lengthOfLastWord(self, s: str) -> int:
+        if s == '':
+            return 0
+
+        words = s.split()
+        
+        return len( words[-1] )
