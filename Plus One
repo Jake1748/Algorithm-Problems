@@ -1,0 +1,27 @@
+# Solution in progress
+
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        if len(digits) == 0:
+            return [1]
+
+        factor = 10
+        result = []
+        increase = True
+
+        for i in range( len(digits) ):
+            num = digits.pop()
+            if increase:
+                num += 1
+                increase = False
+
+            remainder = num % factor
+            if  remainder == 0:
+                if result[-1] != 0:
+                    result.append(0)
+                result.append(1)
+                increase = True
+            else:
+                result.append(remainder)
+        
+        return result[: :-1]
