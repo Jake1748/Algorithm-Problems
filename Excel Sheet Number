@@ -1,0 +1,22 @@
+# Current iterative solution in progress
+
+class Solution:
+    def titleToNumber(self, columnTitle: str) -> int:
+        # repository of letters
+        # make count
+        # loop through title and add the associated number to a count
+
+        hash = {}
+        letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+        for i, let in enumerate(letters):
+            hash[let] = i + 1
+
+        count = hash[ columnTitle[-1] ]
+
+        for i in range( len(columnTitle) - 1 ):
+            char = columnTitle[i]
+            print(char, hash[char])
+            count += hash[char] * 26
+        
+        return count
