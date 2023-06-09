@@ -1,0 +1,38 @@
+# Working solution from PratikSen07 on leetcode. It takes advantage of the == operator between lists to evaluate equality, but this solution relies on the pattern and relationships of the characters in s matching the pattern and relationships of the characters in t
+# O(n) time and O(n) space
+
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        map1 = []
+        map2 = []
+        for idx in s:
+            map1.append(s.index(idx))
+        for idx in t:
+            map2.append(t.index(idx))
+        if map1 == map2:
+            return True
+        return False
+
+# Working solution
+# O(n) time and O(n) space
+
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
+
+        map = {}
+
+        for i in range( len(s) ):
+            s_let = s[i]
+            t_let = t[i]
+
+            if map.get(s_let, -1) == -1:
+                if t_let in map.values():
+                    return False
+                map[s_let] = t_let
+            else:
+                if map[s_let] != t_let:
+                    return False
+
+        return True
