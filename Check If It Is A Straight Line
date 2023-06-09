@@ -1,0 +1,18 @@
+# Incomplete solution
+
+class Solution:
+    def checkStraightLine(self, coordinates: List[List[int]]) -> bool:
+        if len(coordinates) == 0 or len(coordinates) == 1:
+            return False
+
+        for i in range( len(coordinates) - 1 ):
+            list1 = coordinates[i]
+            list2 = coordinates[i + 1]
+
+            sum0 = list2[0] -  list1[0] 
+            sum1 = list2[1] - list1[1]
+
+            if sum0 != sum1:
+                return True
+
+        return False
