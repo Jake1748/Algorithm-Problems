@@ -5,6 +5,33 @@ class Solution:
         if len(coordinates) == 0 or len(coordinates) == 1:
             return False
 
+        reference = []
+
+        for i in range( len(coordinates) - 1 ):
+            list1 = coordinates[i]
+            list2 = coordinates[i + 1]
+
+            diff0 = list2[0] -  list1[0] 
+            diff1 = list2[1] - list1[1]
+
+            if i == 0:
+                reference.append(diff0)
+                reference.append(diff1)
+
+            if reference[0] != diff0 or reference[1] != diff1 and diff0 != 0 and diff1 != 0:
+                return False
+
+            print(list1, list2, reference)
+
+        return True
+
+        #  
+
+class Solution:
+    def checkStraightLine(self, coordinates: List[List[int]]) -> bool:
+        if len(coordinates) == 0 or len(coordinates) == 1:
+            return False
+
         for i in range( len(coordinates) - 1 ):
             list1 = coordinates[i]
             list2 = coordinates[i + 1]
