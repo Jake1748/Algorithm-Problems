@@ -1,0 +1,23 @@
+# Working solution
+# O(n) time and O(n) space
+
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
+
+        map = {}
+
+        for i in range( len(s) ):
+            s_let = s[i]
+            t_let = t[i]
+
+            if map.get(s_let, -1) == -1:
+                if t_let in map.values():
+                    return False
+                map[s_let] = t_let
+            else:
+                if map[s_let] != t_let:
+                    return False
+
+        return True
