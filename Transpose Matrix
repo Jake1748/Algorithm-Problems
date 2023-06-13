@@ -1,0 +1,26 @@
+# Working solution
+# O(n x m) time and O(n x m) space
+
+def transposeMatrix(matrix):
+    result = []
+    for row in range( len( matrix[0] ) ):
+        newArray = []
+        for col in range( len(matrix) ):
+            newArray.append( matrix[col][row] )
+        result.append( newArray ) 
+
+    return result
+
+# Current solution in progress
+
+def transposeMatrix(matrix):
+    result = []
+    for j in range( len( matrix[0] ) ):
+        newArray = []
+        for i in range( len(matrix) ):
+            newArray.append( matrix[i] )
+        print(newArray)
+        result.append( newArray ) 
+
+    print(result)
+    return result
