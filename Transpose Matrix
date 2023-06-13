@@ -1,0 +1,13 @@
+# Current solution in progress
+
+def transposeMatrix(matrix):
+    result = []
+    for j in range( len( matrix[0] ) ):
+        newArray = []
+        for i in range( len(matrix) ):
+            newArray.append( matrix[i] )
+        print(newArray)
+        result.append( newArray ) 
+
+    print(result)
+    return result
