@@ -1,3 +1,21 @@
+# working solution
+# O(n) time and O(1) space
+
+def majorityElement(array):
+    maj = None
+    count = 0
+
+    for val in array:
+        if count == 0:
+            maj = val
+            
+        if val == maj:
+            count += 1
+        else:
+            count -= 1
+
+    return maj
+
 # Solution in progress
 
 def majorityElement(array):
