@@ -1,0 +1,28 @@
+# solution in progress
+
+def sweetAndSavory(dishes, target):
+    result = [0,0]
+    closest = float('-inf')
+    
+    for val in dishes:
+        if val < 0:
+            if target + val > closest:
+                closest = target + val 
+                result[0] = val
+
+    if result[0] == 0:
+        return result
+
+    target = closest
+    closest = float('inf')
+    
+    for val in dishes:
+        if val > 0:
+            if target - val < closest:
+                closest = target - val 
+                result[1] = val 
+
+    if result[1] == 0:
+        return [0,0]
+
+    return result
