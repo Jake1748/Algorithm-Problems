@@ -1,6 +1,34 @@
 # solution in progress
 
 def sweetAndSavory(dishes, target):
+    sweet = []
+    savory = []
+    result = [0,0]
+
+    for val in dishes:
+        if val < 0:
+            sweet.append(val)
+        else:
+            savory.append(val)
+
+    sweet.sort()
+    savory.sort()
+
+    if len(sweet) == 0 or len(savory) == 0:
+        return result
+
+    sweetPointer = 0
+    savoryPointer = 0
+
+    while savoryPointer < len(savory):
+        sum = savory[savoryPointer] + sweet[sweetPointer]
+        
+        if sum  target:
+            return result
+
+# solution in progress
+
+def sweetAndSavory(dishes, target):
     result = [0,0]
     closest = float('-inf')
     
