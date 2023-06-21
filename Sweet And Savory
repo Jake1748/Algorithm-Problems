@@ -1,3 +1,33 @@
+# working solution
+# O(nlog(n)) time O(1) space
+
+def sweetAndSavory(dishes, target):
+    dishes.sort()
+
+    l = 0
+    r = len(dishes) - 1
+    res = [0,0]
+    close = float('inf')
+
+    while l < r and dishes[l] < 0 and dishes[r] > 0:
+        cur = dishes[l] + dishes[r]
+
+        diff = target - cur
+        
+        if diff < close and cur <= target:
+            res[0] = dishes[l]
+            res[1] = dishes[r]
+            close = diff
+
+        if cur < target:
+            l += 1
+        elif cur > target:
+            r -= 1
+        else:
+            return res
+
+    return res
+
 # solution in progress
 
 def sweetAndSavory(dishes, target):
