@@ -11,6 +11,53 @@ def sweetAndSavory(dishes, target):
         else:
             savory.append(val)
 
+    sweet.sort(reverse=True)
+    savory.sort()
+
+    if len(sweet) == 0 or len(savory) == 0:
+        return result
+
+    sweetPointer = 0
+    savoryPointer = 0
+    sum = sweet[sweetPointer] + savory[savoryPointer]
+
+    if sum > target:
+        return [0,0]
+
+    result[0] = sweet[sweetPointer]
+    result[1] = savory[savoryPointer]
+    
+    while savoryPointer < len(savory) and sweetPointer < len(sweet) and sum <= target:
+       
+        result[0] = sweet[sweetPointer]
+        result[1] = savory[savoryPointer]
+        
+        if sum < target:
+            savoryPointer += 1
+        elif sum > target:
+            sweetPointer += 1
+        else:
+            break
+
+        sum = result[0] + result[1]
+
+
+    print(result)
+    return result
+
+# solution in progress
+
+def sweetAndSavory(dishes, target):
+    sweet = []
+    savory = []
+    result = [0,0]
+
+    for val in dishes:
+        if val < 0:
+            sweet.append(val)
+        else:
+            savory.append(val)
+
     sweet.sort()
     savory.sort()
 
