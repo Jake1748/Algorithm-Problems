@@ -1,0 +1,36 @@
+def collidingAsteroids(asteroids):
+    if len(asteroids) == 0:
+        return []
+
+    res = []
+
+    point = 0
+    secPoint = None
+
+    while point < len(asteroids):
+        val = asteroids[point]
+
+        if val < 0:
+            secPoint = point - 1
+        elif val > 0:
+            secPoint = point + 1
+        else:
+            point += 1
+            continue
+
+        if secPoint < 0 or secPoint >= len(asteroids):
+            res.append(asteroids[point])
+            point += 1
+            continue
+
+        big = max( abs(val), abs( asteroids[secPoint] ) )
+        small = min( abs(val), abs( asteroids[secPoint] ) )
+        if big == small:
+            point += 1
+        else:
+            res.append(big)
+            if big == abs( asteroids[secPoint] ):
+                point += 1
+        point += 1
+
+    return res
