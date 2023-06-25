@@ -1,0 +1,11 @@
+# O(n) time and O(n) space
+
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        choices = [1,1] + [ 0 for i in range(n - 1) ]
+        
+        for i in range( 2, len(choices) ):
+            choices[i] = choices[i - 1] + choices[i - 2]
+
+        return choices[n]
+
