@@ -4,21 +4,16 @@ class Solution:
             return 0
 
         left = 0
-        right = len(prices) - 1
-        result = prices[left] - prices[right]
+        right = 1
+        result = 0
 
-        while left != right:
-            print(left, right)
-            diff = prices[left] - prices[right]
+        while right < len(prices):
+            diff = prices[right] - prices[left]
 
-            if diff > result:
-                result = diff
-
-                if price[left] < price[right]:
-                    right -= 1
-                else:
-                    left += 1
+            if prices[left] < prices[right]:
+                result = max( diff, result)
             else:
-                left += 1
+                left = right
 
+            right += 1
         return result
