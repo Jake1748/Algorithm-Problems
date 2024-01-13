@@ -1,0 +1,11 @@
+/* 
+Time: O(n)
+Space: O(n)
+
+This is a very simple question. It asks for a way to concatenat two arrays. The simple + operator is easiest
+*\
+
+class Solution:
+    def getConcatenation(self, nums: List[int]) -> List[int]:
+
+        return nums + nums
