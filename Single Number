@@ -1,0 +1,16 @@
+// Time: O(n)
+// Space: O(n)
+
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        hash = {}
+
+        for num in nums:
+            if  num not in hash:
+                hash[num : 1]
+            else:
+                hash[num : 2]
+
+        for num in nums:
+            if hash[num] == 1:
+                return num
