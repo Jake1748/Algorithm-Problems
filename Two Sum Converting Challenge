@@ -1,0 +1,17 @@
+/*  The challenge is the same thing as Two Sum, but it asks to do it without converting the integer to a string. 
+    This is a solution in progress. 
+
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        div = 10
+        nums = []
+        rem = x % div
+
+        while( rem != 0 )
+            div *= 10
+            nums.append( rem )
+            rem = x % div
+
+
+        if len(nums) == 0:
+            nums.append( x )
